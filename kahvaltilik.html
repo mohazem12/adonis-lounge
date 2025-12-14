@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kahvaltılık | Adonis Lounge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+   <style>
+    :root{
+      --bg:#0f0f10;
+      --card:#111214;
+      --muted:#bdb1a3;
+      --accent:#c9a76a;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#0b0b0b 0%, #121212 60%);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px;background:transparent;position:relative;z-index:20;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#20160f,#2b1f17);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 -4px 8px rgba(0,0,0,0.5)}
+    .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5))}
+    .brand h1{margin:0;font-family:'Playfair Display';font-weight:700;font-size:18px;color:var(--accent);letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:#e8e3df;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    .nav-links a:hover{background:var(--glass)}
+    .btn-reserve{background:linear-gradient(90deg,var(--accent),#f5d999);color:#111;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:0 6px 18px rgba(201,167,106,0.12)}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:18px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,2,2,0.6)}
+    .hero .headline{font-family:'Playfair Display';font-size:44px;margin:0 0 12px;color:#fff}
+    .hero p.lead{margin:0 0 18px;color:var(--muted);max-width:42ch}
+    .hero .cta-row{display:flex;gap:12px;align-items:center}
+    .hero-visual{position:relative;border-radius:18px;overflow:hidden;height:420px;background:linear-gradient(90deg,#1a1613,#261d18)}
+    .hero-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
+    .hero-visual .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.45) 100%)}
+    .badge{position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,0.45);padding:10px 14px;border-radius:12px;font-weight:600}
+    .section{margin-top:36px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.02)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+    .card h3{margin:0 0 6px;font-family:'Playfair Display';font-size:18px}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .price{font-weight:700;color:var(--accent)}
+    .about{display:flex;gap:18px;align-items:center}
+    .about .text{flex:1}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    footer{margin-top:64px;padding:32px;border-radius:16px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);border-top:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+    footer p{margin:0;color:var(--muted)}
+    @media (max-width:1000px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.container{padding:18px}.nav-links{display:none}.grid{grid-template-columns:1fr}.about{flex-direction:column}.hero .headline{font-size:32px}}
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+           <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3c1.5 0 2 .8 2 2 0 1.6-1.3 2.8-2 3 0 0 0 0-2 0V3h2z" fill="url(#g)" opacity="0.9"/>
+            <path d="M4 8c0 3.3 2.7 6 6 6h1v4H6v2h10v-2h-5v-4h1c3.3 0 6-2.7 6-6V6H4v2z" fill="currentColor"/>
+            <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9a76a"/><stop offset="1" stop-color="#f5d999"/></linearGradient></defs>
+          </svg>
+          </div>
+           
+          <div>
+          <h1>Adonis Lounge</h1>
+          <p class="muted">Lounge & Specialty Coffee</p>
+          </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html#home">Hakkımızda</a>
+        <a href="index.html#menu">Menü</a>
+        <a href="index.html#contact">İletişim</a>
+      </div>
+    </nav>
+    <main class="section">
+      <h2 style="font-family:'Playfair Display';font-size:28px">Kahvaltılık</h2>
+      <p class="muted">Güne enerjik başlamak için zengin kahvaltılık çeşitleri. Taze ve doyurucu seçeneklerimizle tanışın.</p>
+      <a href="index.html#menu" class="btn-reserve" style="margin-top:24px;display:inline-block">← Menüye Dön</a>
+    </main>
+
+    <h3 style="font-family:'Playfair Display';font-size:22px;margin:6px 0 12px">Kahvaltılık</h3>
+      <div class="grid">
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Serpme Kahvaltı.jpeg" alt="Nescafe">
+            <h3>Serpme Kahvaltı</h3>
+        <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted"></p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 400 ₺ </p>
+          </a>
+        </article>
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Kahvaltı Tabağı.jpeg" alt="Nescafe Sütlü">
+            <h3>Kahvaltı Tabağı</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted"> </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 250 ₺ </p>
+          </a>
+        </article>
+           <article class="card">
+          <a  style="text-decoration:none;color:inherit">
+            <img src="image/Kavurmalı Yumurta.jpeg" alt="Filtre Kahve">
+            <h3>Kavurmalı Yumurta</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted">  </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 240 ₺ </p>
+
+          </a>
+        </article>
+           <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Sucuklu Yumurta.jpeg" alt="Sıcak içecek görseli">
+            <h3>Sucuklu Yumurta</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted"> </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 160 ₺ </p>
+
+          </a>
+        </article>
+
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Sahanda Çöz Yumurta.jpeg" alt="Sıcak içecek görseli">
+            <h3>Sahanda Çöz Yumurta</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted"> </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 100 ₺ </p>
+
+          </a>
+        </article>
+
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Sahanda Omlet Peynirli.jpeg" alt="Sıcak içecek görseli">
+            <h3>Sahanda Omlet Peynirli</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted">  </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 120 ₺ </p>
+
+          </a>
+        </article>
+
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Sahanda Omlet Sebzeli.jpeg" alt="Sıcak içecek görseli">
+            <h3>Sahanda Omlet Sebzeli </h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted">Çikolata - Karamel </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 140 ₺ </p>
+          </a>
+        </article>
+
+        <article class="card">
+          <a style="text-decoration:none;color:inherit">
+            <img src="image/Menemen.jpeg" alt="Sıcak içecek görseli">
+            <h3>Menemen</h3>
+                    <!-- هذا الكود <p class="muted">ليموناتا وصفي </p> اذا اردت كتابة وصف للمنتج  -->
+            <p class="muted"> </p>
+            <p class="price" style="font-weight:bold; color:#ffffff; margin:4px 0;"> 200 ₺ </p>
+          </a>
+        </article>
+
+        
+  </div>
+</body>
+</html>

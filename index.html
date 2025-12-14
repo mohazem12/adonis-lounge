@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adonis Lounge</title>
+  <meta name="description" content="Adonis Lounge — Tasarımıyla öne çıkan, sıcak ve şık bir kafe ve lounge. Hemen rezervasyon yapın, menümüzü inceleyin, galeriye göz atın." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root{
+      --bg:#0f0f10;
+      --card:#111214;
+      --muted:#bdb1a3;
+      --accent:#c9a76a;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.04);
+      --radius:14px;
+      --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background: linear-gradient(180deg,#0b0b0b 0%, #121212 60%);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+    .container{max-width:var(--max-width);margin:0 auto;padding:28px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 18px;background:transparent;position:relative;z-index:20;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,#20160f,#2b1f17);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,0.6), inset 0 -4px 8px rgba(0,0,0,0.5)}
+    .logo svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5))}
+    .brand h1{margin:0;font-family:'Playfair Display';font-weight:700;font-size:18px;color:var(--accent);letter-spacing:0.6px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:#e8e3df;text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+    .nav-links a:hover{background:var(--glass)}
+    .btn-reserve{background:linear-gradient(90deg,var(--accent),#f5d999);color:#111;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:0 6px 18px rgba(201,167,106,0.12)}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:28px;border-radius:18px;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(2,2,2,0.6)}
+    .hero .headline{font-family:'Playfair Display';font-size:44px;margin:0 0 12px;color:#fff}
+    .hero p.lead{margin:0 0 18px;color:var(--muted);max-width:42ch}
+    .hero .cta-row{display:flex;gap:12px;align-items:center}
+    .hero-visual{position:relative;border-radius:18px;overflow:hidden;height:420px;background:linear-gradient(90deg,#1a1613,#261d18)}
+    .hero-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.05)}
+    .hero-visual .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,0.45) 100%)}
+    .badge{position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,0.45);padding:10px 14px;border-radius:12px;font-weight:600}
+    .section{margin-top:36px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.02)}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+    .card h3{margin:0 0 6px;font-family:'Playfair Display';font-size:18px}
+    .card p{margin:0 0 12px;color:var(--muted);font-size:14px}
+    .price{font-weight:700;color:var(--accent)}
+    .about{display:flex;gap:18px;align-items:center}
+    .about .text{flex:1}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    footer{margin-top:64px;padding:32px;border-radius:16px;background:rgba(255,255,255,0.03);backdrop-filter:blur(6px);border-top:1px solid rgba(255,255,255,0.05);display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+    footer p{margin:0;color:var(--muted)}
+    @media (max-width:1000px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.container{padding:18px}.nav-links{display:none}.grid{grid-template-columns:1fr}.about{flex-direction:column}.hero .headline{font-size:32px}}
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;justify-content:center}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3c1.5 0 2 .8 2 2 0 1.6-1.3 2.8-2 3 0 0 0 0-2 0V3h2z" fill="url(#g)" opacity="0.9"/>
+            <path d="M4 8c0 3.3 2.7 6 6 6h1v4H6v2h10v-2h-5v-4h1c3.3 0 6-2.7 6-6V6H4v2z" fill="currentColor"/>
+            <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9a76a"/><stop offset="1" stop-color="#f5d999"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div>
+          <h1>Adonis Lounge</h1>
+          <p class="muted">Lounge & Specialty Coffee</p>
+        </div>
+      </div>
+      <div class="nav-links" role="navigation" aria-label="Ana gezinme bağlantıları">
+        <a href="#home">Hakkımızda</a>
+        <a href="#menu">Menü</a>
+        <a href="#contact">İletişim</a>
+      </div>
+    </nav>
+    <main class="hero" id="home">
+      <section class="hero-card">
+        <h2 class="headline">Kahve ve şıklığın buluştuğu yer — Adonis Lounge’a hoş geldiniz</h2>
+        <p class="lead">Rahat oturma alanları, özel kahve çekirdekleri ve el yapımı tatlılar. Sıcak ve unutulmaz bir atmosfer sizi bekliyor.</p>
+        <div class="cta-row">
+          <a class="btn-reserve" href="#contact">Rezervasyon Yap</a>
+        </div>
+        <div style="margin-top:18px;color:var(--muted);font-size:14px">Çalışma Saatleri: <strong style="color:#fff">08:00 — 00:00</strong> </div>
+      </section>
+      <aside class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Adonis Lounge iç mekân" />
+        <div class="overlay"></div>
+        <div class="badge">Sakin ortam • Özenle seçilmiş lezzetler</div>
+      </aside>
+    </main>
+    <section class="section" id="menu">
+      <h3 style="font-family:'Playfair Display';font-size:22px;margin:6px 0 12px">Ana Menü</h3>
+      <div class="grid">
+        <article class="card">
+          <a href="sicak-icecekler.html" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Sıcak içecek görseli">
+            <h3>Sıcak İçecekler</h3>
+            <p class="muted">Taze hazırlanmış sıcak içecekler ile gününüze keyif katın.</p>
+          </a>
+        </article>
+        <article class="card">
+          <a href="soguk-icecekler.html" style="text-decoration:none;color:inherit">
+            <img src="image/Soğuk İçecek.jpeg" alt="Soğuk içecek görseli">
+            <h3>Soğuk İçecekler</h3>
+            <p class="muted">Serinletici ve ferah içeceklerle anın tadını çıkarın.</p>
+          </a>
+        </article>  
+
+         <article class="card">
+          <a href="kokteyl.htm" style="text-decoration:none;color:inherit">
+            <img src="image/Soğuk içecek.jpeg" alt="Soğuk içecek görseli">
+            <h3>Kokteyller</h3>
+            <p class="muted">Taze ve ferah içeceklerle anın tadını çıkarın.</p>
+          </a>
+        </article>
+
+
+        <article class="card">
+          <a href="yemekler.html" style="text-decoration:none;color:inherit">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Yemek görseli"> 
+            <h3>Yemekler</h3>
+            <p class="muted">Lezzetli ve özenle hazırlanmış yemek seçenekleri sizi bekliyor.</p>
+          </a>
+        </article>
+
+        <article class="card">
+          <a href="salatalar.html" style="text-decoration:none;color:inherit">
+            <img src="image/salatala.jpeg" alt="salatalar görseli"> 
+            <h3>Salatalar</h3>
+            <p class="muted">Tazelik dolu hafif ve lezzetli salata seçenekleri. Yeşillikler, soslar ve özenle hazırlanan özel tarifler menümüzde.</p>
+          </a>
+        </article>
+
+         <article class="card">
+          <a href="aperatifler.html" style="text-decoration:none;color:inherit">
+            <img src="image/Aperatifler.jpeg" alt="aperatifler görseli"> 
+            <h3>Aperatifler</h3>
+            <p class="muted">Her damağa uygun, sıcak ve soğuk aperatif seçenekleri. Atıştırmalık, paylaşmalık ve nefis lezzetlerle dolu zengin menümüz sizi bekliyor..</p>
+          </a>
+        </article>
+
+
+        <article class="card">
+          <a href="kahvaltilik.html" style="text-decoration:none;color:inherit">
+            <img src="image/Kahvaltılık.jpeg" alt="Kahvaltılık görseli">
+            <h3>Kahvaltılık</h3>
+            <p class="muted">Güne enerjik başlamak için zengin kahvaltılık çeşitleri.</p>
+          </a>
+        </article>
+        <article class="card">
+          <a href="tatlilar.html" style="text-decoration:none;color:inherit">
+            <img src="image/Tatlılar.jpeg" alt="Tatlı görseli">
+            <h3>Tatlılar</h3>
+            <p class="muted">Tatlı krizlerine özel taze ve nefis tatlı seçenekleri.</p>
+          </a>
+        </article>
+ <!--
+       <article class="card">
+          <a href="nargile.html" style="text-decoration:none;color:inherit">
+            <img src="image/Nargile.jpeg" alt="Nargile görseli">
+            <h3>Nargile</h3>
+            <p class="muted">Rahat bir atmosferde kaliteli nargile deneyimi.</p>
+          </a>
+        </article>
+      -->
+
+      </div>
+    </section>
+    <section class="section about">
+      <div class="text">
+        <h3 style="font-family:'Playfair Display';font-size:20px;color:var(--accent);margin:0 0 8px">Adonis Lounge Hakkında</h3>
+        <p class="muted">Günü, en iyi kahve çekirdeklerini seçme tutkusu ile başlıyoruz ve her fincanı özenle hazırlıyoruz. Mekânımız dinlenme, çalışma ve sosyal buluşmalar için tasarlanmıştır. Farklı bir deneyim için bize katılın.</p>
+        <div style="margin-top:12px"><a href="#contact" style="text-decoration:none;color:var(--accent);font-weight:700">Daha Fazla Bilgi →</a></div>
+      </div>
+    </section>
+    <section class="section" id="contact">
+      <h3 style="font-family:'Playfair Display';font-size:20px;margin:0 0 12px">Bize Ulaşın</h3>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:240px">
+          <h4 style="margin:0 0 8px">Konum</h4>
+          <p class="muted" style="margin:0 0 6px">İnönü 1401. SK. No:36/A ,33010 Yenişehir/ Mersin</p>
+        </div>
+        <div class="card" style="flex:1;min-width:240px">
+          <h4 style="margin:0 0 8px">Çalışma Saatleri</h4>
+          <p class="muted" style="margin:0 0 6px">Pazartesi — Pazar: 08:00 — 00:00</p>
+          <p class="muted" style="margin:0">Telefon: +90 546 840 09 55</p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p style="font-size:15px;color:#fff;margin:0"><strong>Adonis Lounge</strong> © 2025</p>
+      <p class="muted" style="font-size:14px;margin:0">
+             Bizi takip edin:
+       <a href="https://www.instagram.com/adoniscafelounge/" target="_blank" style="color:#ffffff; text-decoration:underline;">
+               @adoniscafelounge
+       </a>
+      </p>
+      
+      </footer>
+  </div>
+</body>
+</html>
